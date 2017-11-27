@@ -11,8 +11,18 @@
 
 var letters =  require("./letters.js");
 var words = require("./words.js");
+var numGuesses = 5;
+var blankWord = "";
+var splitLetters = require("./words.js");
+var chosenWord = "";
+
+
 
 var wordBank = ["Delhi", "Abuja", "Helsinki", "Dhaka", "Reykjavik", "Moscow", "Kiev", "Kathmandu"];
+
+// function startGame () {
+
+// };
 
 var chosenWord = wordBank[Math.floor(Math.random() * wordBank.length)];
 
@@ -20,6 +30,22 @@ console.log(chosenWord);
 
 var wordOne = new words(chosenWord);
 
-console.log(wordOne);
+// console.log(wordOne);
 
-wordOne.makeUnderScores(wordOne);
+wordOne.makeUnderScores();
+
+blankWord = wordOne.blankSpacesArray.join(" ");
+
+console.log(blankWord);
+
+// console.log(wordOne.splitLetters);
+
+// console.log(wordOne.blankSpacesArray);
+
+var letterOne = new letters("e");
+
+console.log(letterOne);
+
+letterOne.checkLetters(letterOne);
+
+module.exports.chosenWord = chosenWord;
