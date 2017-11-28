@@ -12,7 +12,7 @@
 // var letters =  require("./letters.js");
 var inquirer = require("inquirer");
 var Words = require("./words.js");
-var numGuesses = 5;
+var numGuesses = 9;
 var wordOne;
 var chosenWord;
 var winCount = 0;
