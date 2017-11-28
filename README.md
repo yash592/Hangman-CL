@@ -7,6 +7,6 @@ Technologies used:
 * Node.js
 * NPM Inquirer package
 
-![Hangman gif](https://media.giphy.com/media/3ohs7Vh1t2w4ZeBwuA/giphy.gif)
+![Hangman gif](https://i.imgur.com/9xnlQrw.gif)
 
 
