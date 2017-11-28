@@ -15,8 +15,8 @@ var Words = require("./words.js");
 var numGuesses = 5;
 var wordOne;
 var chosenWord;
-var winCount;
-var lossCount;
+var winCount = 0;
+var lossCount = 0;
 var blankSpacesArray = [];
 var wrongGuessArray = [];
 
@@ -53,76 +53,42 @@ function startGame () {
 
 };
 
-// startGame();
 
-// console.log(wordOne.splitLetters);
-
-// console.log(wordOne.blankSpacesArray);
-
-// GUESS LETTER
-
-
-// function guessedLetter (letter) {
-
-// }
-
-// ===============================================================================
-
-// TESTING LETTER
-
-
-// var letterOne = "e"
-
-// console.log(letterOne);
-
-// // console.log(letterOne);
-
-// wordOne.checkLetter(letterOne);
-
-// ===============================================================================
-
-// function roundDone () {
-
-// 	if(splitLetters.toString() === blankSpacesArray.toString()) {
-// 		console.log("You win!");
-// 		winCount++
-// 		startGame();
-// 	}
-
-// 	else if (numGuesses = 0) {
-// 		console.log("You lose!")
-// 		lossCount++
-// 		startGame();
-// 	}
-
-// }
 
 // Starting with the prompts!
 
 // confirm prompt to see if user wants to play
 
+function readyToPlay () {
 
-inquirer.prompt([
+	inquirer.prompt([
 
-{
-	type: "confirm",
-	name: "PlayGame",
-	message: "Guess the Capitals of the Countries! Ready to play?"
-}
+	{
+		type: "confirm",
+		name: "PlayGame",
+		message: "Guess the Capitals of the Countries! Ready to play?"
+	}
 
-	]).then (function(response) {
+		]).then (function(response) {
 
-		if(response.PlayGame === true) {
-			console.log("Let's go!");
-			startGame();
-			promptLetter();
-		}
+			if(response.PlayGame === true) {
+				console.log("Let's go!");
+				startGame();
+				promptLetter();
+			}
 
-		else {
-			console.log("Go away you Wuss");
-		}
+			else {
+				console.log("Go away you Wuss");
+			}
 
-	}) // first inquirer function response ends here
+		}) //
+
+
+};
+
+readyToPlay();
+
+
 
 
 	var count = 0;
@@ -146,25 +112,32 @@ inquirer.prompt([
 			]).then(function(response) {
 
 			wordOne.checkLetter(response.letter.toUpperCase());
+
+			numGuesses--;
+			console.log("Guesses remaining: " + numGuesses);
              
             // console.log("You guessed a letter!");
 
-            count++;
+            count++;            
+
+            if(wordOne.splitLetters.toString() === wordOne.blankSpacesArray.toString()) {
+            	console.log("You win!");
+            	winCount++;         	
+            	
+            	console.log("Number of wins: " +winCount);
+            	readyToPlay();
+            }
+
+            else if(numGuesses === 0) {
+            	lossCount++;
+            	console.log("You lost!");
+            	console.log("Number of losses: " + lossCount);
+            	readyToPlay();
+            }
+
+            
 
             promptLetter();
-
-            // if(splitLetters.toString() === blankSpacesArray.toString()) {
-            // 	console.log("You win!");
-            // 	winCount++;
-            // 	console.log(winCount);
-            // 	startGame();
-            // }
-
-            // else {
-            // 	console.log("You lose!");
-            // 	lossCount++
-            // 	console.log(lossCount);
-            // }
 
 			});
 
