@@ -9,4 +9,6 @@ Technologies used:
 
 ![Hangman gif](https://i.imgur.com/9xnlQrw.gif)
 
+Needs some minor logic fixes.
+
 
