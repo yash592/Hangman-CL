@@ -4,8 +4,10 @@
 
 var game = require("./game.js");
 // var letters = require("./letters.js");
-// var splitLetters = "";
+var splitLetters = "";
 var blankSpacesArray = [];
+var wrongGuessArray = [];
+var blankWords = [];
 
 // var letterFound = false;
 
@@ -21,6 +23,7 @@ var blankSpacesArray = [];
 function Word(word) {
 	this.word = word;	
 	this.blankSpacesArray = [];
+	this.wrongGuessArray = [];
 	this.splitLetters = word.split("");
 	
 	this.makeUnderScores = function () {
@@ -47,15 +50,22 @@ function Word(word) {
 			for(var j = 0; j < this.splitLetters.length; j++) {
 				if(this.splitLetters[j]  === letter) {
 					this.blankSpacesArray[j] = letter;
-					console.log("Correct!")
+					
+
 				}
+
+
 			}
+
+			console.log("Good Job! Onto the next letter!");
 
 			console.log(this.blankSpacesArray);
 		}
 
 		else {
 			console.log("Wrong!");
+			this.wrongGuessArray.push(letter);
+			console.log("You have already guessed: " + this.wrongGuessArray);
 		}
 	}
 

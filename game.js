@@ -81,21 +81,21 @@ function startGame () {
 
 // ===============================================================================
 
-function roundDone () {
+// function roundDone () {
 
-	if(splitLetters.toString() === blankSpacesArray.toString()) {
-		console.log("You win!");
-		winCount++
-		startGame();
-	}
+// 	if(splitLetters.toString() === blankSpacesArray.toString()) {
+// 		console.log("You win!");
+// 		winCount++
+// 		startGame();
+// 	}
 
-	else if (numGuesses = 0) {
-		console.log("You lose!")
-		lossCount++
-		startGame();
-	}
+// 	else if (numGuesses = 0) {
+// 		console.log("You lose!")
+// 		lossCount++
+// 		startGame();
+// 	}
 
-}
+// }
 
 // Starting with the prompts!
 
@@ -132,7 +132,7 @@ inquirer.prompt([
 
 	function promptLetter () {
 
-		if (count < 9) {
+		if (count < 13) {
 
 
 
@@ -147,21 +147,30 @@ inquirer.prompt([
 
 			wordOne.checkLetter(response.letter.toUpperCase());
              
-            console.log("You guessed a letter!");
+            // console.log("You guessed a letter!");
 
             count++;
 
             promptLetter();
 
+            // if(splitLetters.toString() === blankSpacesArray.toString()) {
+            // 	console.log("You win!");
+            // 	winCount++;
+            // 	console.log(winCount);
+            // 	startGame();
+            // }
+
+            // else {
+            // 	console.log("You lose!");
+            // 	lossCount++
+            // 	console.log(lossCount);
+            // }
+
 			});
 
 		}
 
-		else {
-
-			console.log("Done");
-
-		}
+		
 
 
 
