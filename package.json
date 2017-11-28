@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/yash592/Hangman-CL/issues"
   },
-  "homepage": "https://github.com/yash592/Hangman-CL#readme"
+  "homepage": "https://github.com/yash592/Hangman-CL#readme",
+  "dependencies": {
+    "inquirer": "^4.0.0"
+  }
 }

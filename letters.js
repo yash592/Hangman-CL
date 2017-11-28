@@ -22,7 +22,7 @@ function Letters(letter) {
 			for(var j = 0; j < splitLetters.length; j++) {
 
 				if(splitLetters[j] === letter) {
-					// blankSpacesArray[j] = this.letter;
+					blankSpacesArray[j] = this.letter;
 					console.log("Correct!");
 				}
 			}

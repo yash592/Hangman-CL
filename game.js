@@ -9,43 +9,164 @@
 //   depending on whether or not the user has guessed the letter.
 //    This should contain letter specific logic and data.
 
-var letters =  require("./letters.js");
-var words = require("./words.js");
+// var letters =  require("./letters.js");
+var inquirer = require("inquirer");
+var Words = require("./words.js");
 var numGuesses = 5;
-var blankWord = "";
-var splitLetters = require("./words.js");
-var chosenWord = "";
+var wordOne;
+var chosenWord;
+var winCount;
+var lossCount;
+var blankSpacesArray = [];
+var wrongGuessArray = [];
 
 
+// =================================
 
-var wordBank = ["Delhi", "Abuja", "Helsinki", "Dhaka", "Reykjavik", "Moscow", "Kiev", "Kathmandu"];
+// CAPITALS OF THE WORLD (WORD BANK)
 
-// function startGame () {
+// =================================
 
-// };
 
-var chosenWord = wordBank[Math.floor(Math.random() * wordBank.length)];
+var wordBank = ["DELHI", "ABUJA", "HELSINKI", "DHAKA", "REYKJAVIK", "MOSCOW", "KIEV", "KATHMANDU"];
 
-console.log(chosenWord);
+// START GAME 
 
-var wordOne = new words(chosenWord);
+function startGame () {
 
-// console.log(wordOne);
+	chosenWord = wordBank[Math.floor(Math.random() * wordBank.length)];
 
-wordOne.makeUnderScores();
+	// console.log(chosenWord);
 
-blankWord = wordOne.blankSpacesArray.join(" ");
+	wordOne = new Words(chosenWord);	
 
-console.log(blankWord);
+	wordOne.makeUnderScores();	
+
+	blankWord = wordOne.blankSpacesArray.join(" ");
+
+	console.log(blankWord);
+
+	blankSpacesArray = [];
+
+	wrongGuessArray = [];
+
+
+};
+
+// startGame();
 
 // console.log(wordOne.splitLetters);
 
 // console.log(wordOne.blankSpacesArray);
 
-var letterOne = new letters("e");
+// GUESS LETTER
 
-console.log(letterOne);
 
-letterOne.checkLetters(letterOne);
+// function guessedLetter (letter) {
+
+// }
+
+// ===============================================================================
+
+// TESTING LETTER
+
+
+// var letterOne = "e"
+
+// console.log(letterOne);
+
+// // console.log(letterOne);
+
+// wordOne.checkLetter(letterOne);
+
+// ===============================================================================
+
+function roundDone () {
+
+	if(splitLetters.toString() === blankSpacesArray.toString()) {
+		console.log("You win!");
+		winCount++
+		startGame();
+	}
+
+	else if (numGuesses = 0) {
+		console.log("You lose!")
+		lossCount++
+		startGame();
+	}
+
+}
+
+// Starting with the prompts!
+
+// confirm prompt to see if user wants to play
+
+
+inquirer.prompt([
+
+{
+	type: "confirm",
+	name: "PlayGame",
+	message: "Guess the Capitals of the Countries! Ready to play?"
+}
+
+	]).then (function(response) {
+
+		if(response.PlayGame === true) {
+			console.log("Let's go!");
+			startGame();
+			promptLetter();
+		}
+
+		else {
+			console.log("Go away you Wuss");
+		}
+
+	}) // first inquirer function response ends here
+
+
+	var count = 0;
+
+
+	// function with prompts to guess a letter
+
+	function promptLetter () {
+
+		if (count < 9) {
+
+
+
+	inquirer.prompt([
+{
+	type: "input",
+	name: "letter",
+	message: "Guess a letter!"
+}
+
+			]).then(function(response) {
+
+			wordOne.checkLetter(response.letter.toUpperCase());
+             
+            console.log("You guessed a letter!");
+
+            count++;
+
+            promptLetter();
+
+			});
+
+		}
+
+		else {
+
+			console.log("Done");
+
+		}
+
+
+
+	} // prompt letter ends here
+
+
 
 module.exports.chosenWord = chosenWord;
