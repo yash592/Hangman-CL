@@ -1,5 +1,5 @@
 # **Hangman-CL**
-## Command Line Hangman game built using Node.js and javascript constructors
+## Command Line Capitals of the World Hangman game built using Node.js and javascript constructors
 
 Technologies used:
 
@@ -9,6 +9,6 @@ Technologies used:
 
 ![Hangman gif](https://i.imgur.com/9xnlQrw.gif)
 
-Needs some minor logic fixes.
+Needs some minor logic fixes
 
 
